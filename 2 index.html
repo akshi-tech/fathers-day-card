@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Father's Day Papa ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background: linear-gradient(
+        135deg,
+        #ffd6e8,
+        #d6f5ff,
+        #fff3c4,
+        #d8ffd8
+    );
+    min-height:100vh;
+    overflow:hidden;
+    text-align:center;
+}
+
+.screen{
+    display:none;
+    min-height:100vh;
+    padding:20px;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.active{
+    display:flex;
+}
+
+h1{
+    color:#444;
+    margin-bottom:20px;
+}
+
+.gift{
+    font-size:120px;
+    cursor:pointer;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    50%{transform:translateY(-15px);}
+}
+
+.photo{
+    width:85%;
+    max-width:350px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+.caption{
+    margin-top:20px;
+    font-size:1.2rem;
+    color:#444;
+    padding:0 15px;
+}
+
+.nextBtn{
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff8fb1;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+}
+
+.letter{
+    background:white;
+    width:90%;
+    max-width:500px;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    line-height:1.8;
+    color:#444;
+}
+
+.heart{
+    position:fixed;
+    bottom:-20px;
+    animation:float 6s linear infinite;
+    font-size:24px;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Gift Box -->
+
+<div class="screen active" id="giftScreen">
+    <h1>Happy Father's Day Papa ❤️</h1>
+    <p>Tap the gift to begin your surprise</p>
+    <div class="gift" onclick="showScreen(1)">🎁</div>
+</div>
+
+<!-- Photo 1 -->
+
+<div class="screen" id="screen1">
+    <img src="photo1.jpeg" class="photo">
+    <div class="caption">
+        Thank you for always being my strength.
+    </div>
+    <button class="nextBtn" onclick="showScreen(2)">
+        Next Memory ➜
+    </button>
+</div>
+
+<!-- Photo 2 -->
+
+<div class="screen" id="screen2">
+    <img src="photo2.jpeg" class="photo">
+    <div class="caption">
+        Every memory with you is special.
+    </div>
+    <button class="nextBtn" onclick="showScreen(3)">
+        Next Memory ➜
+    </button>
+</div>
+
+<!-- Photo 3 -->
+
+<div class="screen" id="screen3">
+    <img src="photo3.jpeg" class="photo">
+    <div class="caption">
+        No distance can change how much I love you.
+    </div>
+    <button class="nextBtn" onclick="showScreen(4)">
+        Open Letter 💌
+    </button>
+</div>
+
+<!-- Letter -->
+
+<div class="screen" id="screen4">
+    <div class="letter">
+        <h2>Dear Papa ❤️</h2>
+
+```
+    <p>
+    Thank you for every sacrifice,
+    every lesson, and every moment
+    you stood beside me.
+    </p>
+
+    <p>
+    Even when we are in different cities,
+    your love and support are always
+    with me.
+    </p>
+
+    <p>
+    You are my first hero,
+    my biggest inspiration,
+    and one of the strongest people
+    I know.
+    </p>
+
+    <p>
+    Happy Father's Day, Papa.
+    I love you very much. ❤️
+    </p>
+
+    <p>
+    – Your Daughter, Akshi
+    </p>
+</div>
+
+<button class="nextBtn" onclick="showScreen(5)">
+    Final Surprise ❤️
+</button>
+```
+
+</div>
+
+<!-- Final Screen -->
+
+<div class="screen" id="screen5">
+    <h1>❤️ Happy Father's Day Papa ❤️</h1>
+    <h2>Love You Forever</h2>
+</div>
+
+<script>
+
+function showScreen(num){
+
+    document.querySelectorAll('.screen')
+    .forEach(s => s.classList.remove('active'));
+
+    if(num===1)
+        document.getElementById('screen1').classList.add('active');
+
+    if(num===2)
+        document.getElementById('screen2').classList.add('active');
+
+    if(num===3)
+        document.getElementById('screen3').classList.add('active');
+
+    if(num===4)
+        document.getElementById('screen4').classList.add('active');
+
+    if(num===5){
+        document.getElementById('screen5').classList.add('active');
+        createHearts();
+    }
+}
+
+function createHearts(){
+
+    setInterval(()=>{
+
+        let heart=document.createElement('div');
+
+        heart.className='heart';
+        heart.innerHTML='❤️';
+
+        heart.style.left=Math.random()*100+'vw';
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },6000);
+
+    },300);
+
+}
+</script>
+
+</body>
+</html>
